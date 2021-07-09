@@ -1,1059 +1,204 @@
-/*--- reset code ---*/
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
-	margin:0;
-	padding:0;
-	border:0;
-	font-size:100%;
-	font:inherit;
-	vertical-align:baseline;
-}
-article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-ol,ul {
-	list-style:none;
-	margin:0px;
-	padding:0px;
-}
-blockquote,q {
-	quotes:none;
-}
-blockquote:before,blockquote:after,q:before,q:after {
-	content:'';
-	content:none;
-}
-table {
-	border-collapse:collapse;
-	border-spacing:0;
+body{
+  display:flex;
+  height:100vh;
+  min-height:35rem;
+  align-items:center;
+  justify-content:center;
+  font-family:'Josefin Sans', sans-serif;
 }
 
-/* start editing from here */
-a {
-	text-decoration:none;
-}
-.txt-rt {
-	text-align:right;
-}/* text align right */
-.txt-lt {
-	text-align:left;
-}/* text align left */
-.txt-center {
-	text-align:center;
-/*-- W3Layouts --*/	
-}/* text align center */
-.float-rt {
-	float:right;
-}/* float right */
-.float-lt {
-	float:left;
-}/* float left */
-.clear {
-	clear:both;
-}/* clear float */
-.pos-relative {
-	position:relative;
-}/* Position Relative */
-.pos-absolute {
+.card{
 	position:absolute;
-}/* Position Absolute */
-.vertical-base {	
-	vertical-align:baseline;
-}/* vertical align baseline */
-.vertical-top {	
-	vertical-align:top;
-}/* vertical align top */
-nav.vertical ul li {	
-	display:block;
-}/* vertical menu */
-nav.horizontal ul li {	
-	display: inline-block;
-}/* horizontal menu */
-img {
-	max-width:100%;
-}
-
-/*--- end reset code ---*/
-
-body {
-	margin:0;
-	padding:0;
-	background:url(../images/banner.jpg) no-repeat;
-	background-attachment:fixed;
-	background-position:center;
-	background-size:cover;
-	-webkit-background-size:cover;
-	-moz-background-size:cover;
-	-o-background-size:cover;
-	font-family: 'Muli', sans-serif;
-}
-.clear {
-	clear:both;
-}
-/*-- AgileITS --*/
-h1 {
-	text-align:center;
-	font-size:45px;
-	color:#fff;
-	padding:50px 0;
-	text-transform:uppercase;
-	font-weight: 300;
-	font-family: 'Nunito', sans-serif;
-}
-.log .content1 h2 {
-	font-size:40px;
-	padding: 30px 0 0;
-	color:#fff;
-	font-weight: 300;
-	font-family: 'Nunito', sans-serif;
-	text-align:center;
-}
-.log .content2 h2 {
-	font-size:40px;
-	padding: 30px 0 0;
-	color:#fff;
-	font-weight: 300;
-	font-family: 'Nunito', sans-serif;
-	text-align:center;
-}
-.log {
-	width:75%;
-	margin:0 auto;
-}
-.content1 {
-	width: 48%;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.21);
-    padding: 30px 0;
-    float: left;
-    border-radius: 0px;
-}
-.content1 input[type="text"] {
-	padding:10px 40px 10px 10px;
-	width:70%;
-	border:1px solid #fff;
-	color:#fff;
-	text-align:left;
-	outline:none;
-	font-size:18px;
-	background:url(../images/person.png) no-repeat 440px 10px;
-	margin-top:4%;
-	font-weight: 300;
-	font-family: 'Muli', sans-serif;
-	/*-- W3Layouts --*/
-	border-radius: 4px;
-}
-.content1 input[type="password"] {
-	padding:10px 40px 10px 10px;
-	width:70%;
-	border:1px solid #fff;
-	color:#fff;
-	text-align:left;
-	outline:none;
-	font-size:18px;
-	background:url(../images/lock.png) no-repeat 440px 10px;
-	margin-top:6%;
-	font-weight: 300;
-	font-family: 'Muli', sans-serif;
-	border-radius: 4px;
-}
-.button-row {
+	top:50%;
+	left:50%;
 	width:100%;
-	margin-top:5%;
-	padding-bottom:40px;
-}
-.sign-in {
-	padding:10px;
-	background-color:#4C9A39;
-	width:35%;
-	border:none;
-	cursor:pointer;
-	color:#fff;
-	font-weight: 300;
-	font-family: 'Nunito', sans-serif;
-	font-size:20px;
-	margin-left:62px;
-	float:left;
-	text-transform:uppercase;
-	border-radius:4px;
-	transition: all 0.5s ease-in-out;
-	-webkit-transition: all 0.5s ease-in-out;
-	-moz-transition: all 0.5s ease-in-out;
-	-o-transition: all 0.5s ease-in-out;
-}
-.sign-in:hover {
-	background-color:#376D29;
-	color:#fff;
-}
-.reset {
-	padding:10px;
-	background-color:#c0392b;
-	width:35%;
-	border:none;
-	/*-- AgileITS --*/
-	cursor:pointer;
-	color:#fff;
-	font-size:20px;
-	float:right;
-	margin-right:62px;
-	font-weight: 300;
-	font-family: 'Nunito', sans-serif;
-	text-transform:uppercase;
-	border-radius:4px;
-	transition: all 0.5s ease-in-out;
-	-webkit-transition: all 0.5s ease-in-out;
-	-moz-transition: all 0.5s ease-in-out;
-	-o-transition: all 0.5s ease-in-out;
-}
-.reset:hover {
-	background-color:#791F16;
-	color:#fff;	
-}
-.content2 {
-	width:48%;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.21);
-    float:right;
-	padding: 30px 0 70px;
-    border-radius: 0px;
-}
-.content2 input[type="text"] {
-	padding:10px 40px 10px 10px;
-	width:70%;
-	border:1px solid white;
-	color:#fff; 
-	text-align:left;
-	outline:none;
-	font-size:18px;
-	background:url(../images/person.png) no-repeat 440px 10px;
-	margin-top:5%;
-	font-weight: 300;
-	font-family: 'Muli', sans-serif;
-	border-radius: 4px;
-}
-.content2 input[type="tel"] {
-	padding:10px 40px 10px 10px;
-	width:70%;
-	border:1px solid white;
-	color:#fff; 
-	text-align:left;
-	outline:none;
-	font-size:18px;
-	background:url(../images/phone.png) no-repeat 440px 10px;
-	margin-top:4%;
-	font-weight: 300;
-	font-family: 'Muli', sans-serif;
-	border-radius: 4px;
-}
-.content2 input[type="email"] {
-	padding:10px 40px 10px 10px;
-	width:70%;
-	border:1px solid white;
-	color:#fff; 
-	text-align:left;
-	outline:none;
-	font-size:18px;
-	background:url(../images/mail.png) no-repeat 440px 10px;
-	margin-top:4%;
-	font-family: 'Muli', sans-serif;
-	border-radius: 4px;
-}
-.content2 input[type="password"] {
-	padding:10px 40px 10px 10px;
-	width:70%;
-	border:1px solid white;
-	color:#fff;
-	text-align:left;
-	outline:none;
-	font-size:18px;
-	background:url(../images/lock.png) no-repeat 440px 10px;
-	margin-top:4%;
-	font-weight: 300;
-	font-family: 'Muli', sans-serif;
-	border-radius: 4px;
-}
-.register {
-	padding:10px;
-	background-color:#4C9A39;
-	width:78%;
-	border:none;
-	cursor:pointer;
-	color:#fff;
-	font-weight: 300;
-	font-family: 'Nunito', sans-serif;
-	font-size:20px;
-	margin-top:7%;
-	text-transform:uppercase;
-	border-radius:4px;
-	-webkit-transition: all 0.5s ease-in-out;
-	-moz-transition: all 0.5s ease-in-out;
-	-o-transition: all 0.5s ease-in-out;
-}
-.register:hover {
-	background-color:#376D29;
-	color:white;
-}
-.footer {
-	margin-top:3%;
-	padding:50px 0;
-	text-align:center;
-}
-.footer p {
-	color:#fff;
-	font-size:17px;
-	font-family: 'Muli', sans-serif;
-	font-weight: 300;
-	line-height:25px;
-}
-.footer a,a:active {
-	color:#fff;
-	text-decoration:none;
-	transition: all 0.5s ease-in-out;
-}
-.footer a:hover {
-	color:#c0392b;
-	transition: all 0.5s ease-in-out;
+  padding-top:1rem;
+  padding-bottom:1rem;
+	-webkit-transform:translate(-50%,-50%);
+	        transform:translate(-50%,-50%);
 }
 
-/*-- responsive-mediaquries --*/
-@media(max-width:1920px){
-	.content1 input[type="text"] {
-	background: url(../images/person.png) no-repeat 500px 10px;
-	}
-	.content1 input[type="password"] {
-	background:url(../images/lock.png) no-repeat 500px 10px;
-	}
-	.sign-in {
-	margin-left:78px;
-	}
-	.reset {
-	margin-right:78px;
-	}
-	.content2 input[type="text"] {
-		background: url(../images/person.png) no-repeat 500px 10px;
-	}
-	.content2 input[type="tel"] {
-		    background: url(../images/phone.png) no-repeat 500px 10px;
-	}
-	.content2 input[type="email"] {
-		background: url(../images/mail.png) no-repeat 500px 10px;
-	}
-	.content2 input[type="password"] {
-		    background: url(../images/lock.png) no-repeat 500px 10px;
-	}
+.card-wrap{
+	position:relative;
+  margin:0 auto;
 }
 
-@media(max-width:1680px){
-	.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 438px 10px;
-	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 438px 10px;
-	}
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 438px 10px;
-	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 438px 10px;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 438px 10px;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 438px 10px;
-	}
-	.sign-in {
-    margin-left: 65px;
-	}
-	.reset {
-	margin-right:65px;
-	}
+@media (min-width: 769px){
+
+.card-wrap{
+    max-width:450px
+}
+  }
+
+.card-body{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
-@media(max-width:1600px){
-	.content1 input[type="text"] { 
-    background: url(../images/person.png) no-repeat 418px 10px;
-	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 418px 10px;
-	}
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 418px 10px;
-	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 418px 10px;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 418px 10px;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 418px 10px;
-	}
-	.sign-in {
-    margin-left: 61px;
-}
-	.reset {
-	margin-right:61px;
-	}
+.card-body p{
+    font-size:1.1rem;
+  }
+
+.card-title{
+  font-weight:bold;
+  font-size:1.8rem;
 }
 
-@media (max-width: 1440px){
-	.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 380px 10px;
-	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 380px 10px;
-	}
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 380px 10px;
-	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 380px 10px;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 380px 10px;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 380px 10px;
-	}
-	.sign-in {
-    margin-left: 52px;
-	}
-	.reset {
-	margin-right:52px;
-	}
+.badge-wrap{
+  display:flex;
+  justify-content:center;
 }
 
-@media (max-width: 1366px){
-	.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 360px 10px;
-	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 360px 10px;
-	}
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 360px 10px;
-	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 360px 10px;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 360px 10px;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 360px 10px;
-	}
-	.sign-in {
-    margin-left: 49px;
-	}
-	.reset {
-	margin-right:49px;
+.badge-wrap a.badge{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:2.5rem;
+    height:2.5rem;
+    margin:0 .2rem;
+    padding:0;
+    opacity:.7;
+    border-radius:50%;
+    transition:opacity .3s ease-in;
+    font-size:1rem;
+    color:#fff;
+    text-decoration:none;
+    cursor:pointer;
+  }
+
+.badge-wrap a.badge:hover{
+      opacity:1;
+      color:#fff;
+    }
+
+.btn{
+  color:#fff !important;
+	width:10em;
+	transition:all .4s;
+	border-radius:20px;
+	border:2px solid transparent;
 }
-	.register {
-	width:395px;
+.btn.btn-back{
+  position:absolute;
+  top:0;
+  left:0;
+  border-radius:0;
+  width:3rem;
+  height:3rem;
+  font-size:1.5rem;
+  border:0;
 }
+.btn.btn-back:hover{
+    border:0 !important;
+  }
+
+.form-control{
+  font-family:'Handle', cursive;
 }
 
-@media (max-width: 1280px){
-	.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 338px 10px;
-	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 338px 10px;
-	}
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 338px 10px;
-	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 338px 10px;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 338px 10px;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 338px 10px;
-	}
-	.sign-in {
-    margin-left: 43px;
-}
-	.reset {
-	margin-right:43px;
-}
-	.register {
-    width: 373px;
-}
-}
+.form-control::-webkit-input-placeholder{
+    font-family:'Josefin Sans', sans-serif;
+    letter-spacing:.1em;
+    font-size:.9rem;
+  }
 
-@media (max-width: 1080px){
-	.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 288px 10px;
-	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 288px 10px;
-	}
-	.sign-in {
-    margin-left: 33px;
-	}
-	.reset {
-    margin-right: 33px;
-	}
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 288px 10px;
-	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 288px 10px;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 288px 10px;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 288px 10px;
-	}
-	h1 {
-	font-size:40px;	
-	}
-	.log .content1 h2 , .log .content2 h2 {
-    font-size: 35px;
-	}
-	.register {
-    width: 320px;
-}
-}
+.form-control:-ms-input-placeholder{
+    font-family:'Josefin Sans', sans-serif;
+    letter-spacing:.1em;
+    font-size:.9rem;
+  }
 
-@media (max-width: 1050px){
-	.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 280px 10px;
-	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 280px 10px;
-	}
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 280px 10px;
-	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 280px 10px;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 280px 10px;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 280px 10px;
-	}
-	.register {
-    width: 315px;
-}
-}
+.form-control::-ms-input-placeholder{
+    font-family:'Josefin Sans', sans-serif;
+    letter-spacing:.1em;
+    font-size:.9rem;
+  }
 
-@media (max-width: 1024px){
-	.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 370px 10px;
-	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 370px 10px;
-	}
-	.sign-in {
-    margin-left:30px;
-	}
-	.reset {
-    margin-right:30px;
-	}
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 370px 10px;
-	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 370px 10px;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 370px 10px;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 370px 10px;
-	}
-	.button-row {
-	padding:25px 0;	
-	}
-	.register {
-    width: 304px;
-	}
-	.log .content1 h2, .log .content2 h2 {
-    font-size: 30px;
-    padding: 15px 0;
+.form-control::placeholder{
+    font-family:'Josefin Sans', sans-serif;
+    letter-spacing:.1em;
+    font-size:.9rem;
+  }
+.card--welcome{
+  z-index:3;
 }
-}
-	
-@media (max-width: 991px){
-	.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 260px 10px;
-	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 260px 10px;
-	}	
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 260px 10px;
-	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 260px 10px;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 260px 10px;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 260px 10px;
-	}
-	.register {
-    width: 295px;
-}
-}
-	
-@media (max-width: 900px){	
-	.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 240px 10px;
-	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 240px 10px;
-	}
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 240px 10px;
-	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 240px 10px;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 240px 10px;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 240px 10px;
-	}
-	.register {
-    width: 274px;
-	}
-	.button-row {
-    padding: 10px 0;
-	}
-	.sign-in {
-    margin-left: 23px;
-	}
-	.reset {
-    margin-right: 23px;
-	}
-	.content2 {
-	padding:30px 0 50px;
-	}
-}
+.card--welcome .card-title{
+    color:#ee9ca7;
+  }
+.card--welcome .btn-wrap{
+    display:flex;
+    flex-direction:column;
+  }
+.card--welcome .btn{
+    color:#fff;
+    transition:all .3s;
+  }
+.card--welcome .btn:hover{
+      background-color:rgba(238,156,167,.25);
+      font-weight:bold;
+    }
+.card--welcome .btn-register{
+    margin-bottom:.8em;
+    background-color:#ee9ca7;
+  }
+.card--welcome .btn-register:hover{
+      color:#ee9ca7;
+    }
+.card--welcome .btn-login{
+    background-color:#a7bfe8;
+  }
 
-@media (max-width: 800px){
-	.content1 input[type="text"] {
-	background: url(../images/person.png) no-repeat 245px 10px;
-    font-size: 16px;
-    background-size: 7% 50%;
+.card-inquire .card-title{
+    color:#a7bfe8;
+  }
+.card-inquire .badge{
+    background-color:#a7bfe8;
+  }
+.card-inquire .btn{
+    background-color:#a7bfe8;
+  }
+.card-inquire .btn:hover{
+			background-color:#fff;
+			color:#a7bfe8 !important;
+			font-weight:bold;
+			border:2px solid rgba(167,191,232,.25);
+		}
+.card-inquire .btn:focus{
+      box-shadow:0 0 0 0.2rem rgba(167,191,232,.25);
+    }
+.card-inquire .form-control{
+    color:#a7bfe8;
+    border-color:rgba(167,191,232,.25);
+  }
+.card-inquire .form-control:focus{
+      box-shadow:0 0 0 0.2rem rgba(167,191,232,.25);
+    }
+body{
+	background:linear-gradient(to right, #ffdde1, #ee9ca7, #a7bfe8, #6190e8);
+  background-size:500% 500%;
+  transition:background 3s ease;
+  background-position:50% 50%;
+}
+body.is-register{
+  	background-position:0% 50%;
 	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 245px 10px;
-	font-size: 16px;
-	background-size: 7% 50%;
+body.is-login{
+    background-position:100% 50%;
+  }
+.card{
+	transition:all .3s .1s ease-out;
+}
+.card:not(.is-show){
+		opacity:0;
+		-webkit-transform:translate(-50%,-50%) rotateX(95deg);
+		        transform:translate(-50%,-50%) rotateX(95deg);
 	}
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 245px 10px;
-	font-size: 16px;
-	background-size: 7% 50%;
+.card.is-show{
+		opacity:1;
+		-webkit-transform:translate(-50%,-50%);
+		        transform:translate(-50%,-50%);
+    z-index:5;
 	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 245px 10px;
-	font-size: 16px;
-	background-size: 7% 50%;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 245px 10px;
-	font-size: 16px;
-	background-size: 7% 50%;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 245px 10px;
-	font-size: 16px;
-	background-size: 7% 50%;
-	}
-	.log {
-    width: 85%;
-	}
-	h1 {
-    font-size: 35px;
-	}
-	.log .content1 h2, .log .content2 h2 {
-    font-size: 27px;
-	}
-}
-
-@media (max-width: 768px){
-	.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 240px 10px;
-	background-size: 7% 50%;
-	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 240px 10px;
-	background-size: 7% 50%;
-	}
-	.sign-in {
-    margin-left:22px;
-	font-size: 16px;
-	}
-	.reset {
-    margin-right:22px;
-	font-size: 16px;
-	}
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 240px 10px;
-	background-size: 7% 50%;
-	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 240px 10px;
-	background-size: 7% 50%;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 240px 10px;
-	background-size: 7% 50%;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 240px 10px;
-	background-size: 7% 50%;
-	}
-	.register {
-    width: 270px;
-	font-size: 16px;
-	}
-	.footer p {
-	font-size:16px;	
-	}
-	.log {
-	margin:0 auto 50px;	
-	}
-}
-
-@media (max-width: 736px){
-	.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 332px 10px;
-	background-size: 7% 50%;
-	}
-	.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 332px 10px;
-	background-size: 7% 50%;
-	}
-	.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 332px 10px;
-	background-size: 7% 50%;
-	}
-	.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 332px 10px;
-	background-size: 7% 50%;
-	}
-	.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 332px 10px;
-	background-size: 7% 50%;
-	}
-	.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 332px 10px;
-	background-size: 7% 50%;
-	}
-	.log {
-    width: 100%;
-	}
-	.content1{
-	width:63%;
-	float:none;
-	margin:0 auto;
-	}
-	.content1 p {
-    margin-left: 31%;
-	}
-	.content2{
-	width:63%;
-	float:none;
-	margin: 50px auto 0;
-	}
-	h1 {
-	padding:35px 0;	
-	}
-	.sign-in {
-    margin-left: 43px;
-	}
-	.reset {
-    margin-right: 43px;
-	}
-	.register {
-    width: 370px;
-	}
-}
-	
-@media (max-width: 667px){
-	.content1 {
-    width: 70%;
-	}
-	.sign-in {
-    margin-left: 45px;
-    width: 120px;
-	}
-	.reset {
-    margin-right: 45px;
-    width: 120px;
-	}
-	.content2{
-	width:70%;
-	}
-}
-	
-@media (max-width: 640px){
-	.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 322px 10px;
-    background-size: 7% 50%;
-}
-.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 322px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 322px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 322px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 322px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 322px 10px;
-    background-size: 7% 50%;
-}
-	.content1 {
-    width: 70%;
-	}
-	.sign-in {
-    margin-left:41px;
-	}
-	.reset {
-    margin-right:41px;
-	}	
-	.register{
-	width:82%;
-	}
-}
-
-@media (max-width: 600px){
-.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 304px 10px;
-    background-size: 7% 50%;
-}
-.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 304px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 304px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 304px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 304px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 304px 10px;
-    background-size: 7% 50%;
-}
-.sign-in {
-    margin-left: 37px;
-}
-.reset {
-    margin-right: 37px;
-}
-h1 {
-    font-size: 30px;
-}
-}
-
-@media (max-width: 568px){
-	h1 {
-    padding: 25px 0;
-	}
-	.log .content1 h2, .log .content2 h2 {
-    font-size: 30px;
-    padding: 5px 0 15px;
-}
-.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 287px 10px;
-    background-size: 7% 50%;
-}
-.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 287px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 287px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 287px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 287px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 287px 10px;
-    background-size: 7% 50%;
-}
-.sign-in {
-    margin-left: 33px;
-}
-.reset {
-    margin-right: 33px;
-}
-.register {
-    width: 83%;
-}
-}
-
-@media (max-width: 480px){
-	.content1 , .content2 {
-    width: 80%;
-}
-.content1 input[type="text"] {
-    background: url(../images/person.png) no-repeat 280px 10px;
-    background-size: 7% 50%;
-}
-.content1 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 280px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="text"] {
-    background: url(../images/person.png) no-repeat 280px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="tel"] {
-    background: url(../images/phone.png) no-repeat 280px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="email"] {
-    background: url(../images/mail.png) no-repeat 280px 10px;
-    background-size: 7% 50%;
-}
-.content2 input[type="password"] {
-    background: url(../images/lock.png) no-repeat 280px 10px;
-    background-size: 7% 50%;
-}
-.sign-in {
-    margin-left: 32px;
-}
-.reset {
-    margin-right: 32px;
-}
-.log {
-    margin: 0 auto;
-}
-.footer {
-	padding: 50px 20px;
-}
-}
-
-@media (max-width:414px){
-	h1 {
-    font-size: 28px;
-}
-.log .content1 h2, .log .content2 h2 {
-    font-size: 27px;
-}
-.sign-in {
-    margin-left: 22px;
-}
-.reset {
-    margin-right: 22px;
-}
-.register {
-    width: 86%;
-}
-}
-
-@media (max-width: 384px){
-	.sign-in {
-    margin-left: 19px;
-}
-.reset {
-    margin-right: 19px;
-}
-.register {
-    width: 87%;
-}
-}
-
-@media (max-width: 375px){
-	h1 {
-    font-size: 26px;
-}
-.log .content1 h2, .log .content2 h2 {
-    font-size: 25px;
-}
-}
-
-@media (max-width: 320px){
-	h1 {
-    font-size: 24px;
-}
-.content1, .content2 {
-    width: 85%;
-}
-.content1 input[type="text"] {
-	width: 65%;
-	background: url(../images/person.png) no-repeat 191px 10px;
-    background-size: 9% 50%;
-	font-size: 14px;
-}
-.content1 input[type="password"] {
-	width:65%;
-	background: url(../images/lock.png) no-repeat 191px 10px;
-    background-size: 9% 50%;
-	font-size: 14px;
-}
-.content2 input[type="text"] {
-	width:65%;
-	background: url(../images/person.png) no-repeat 191px 10px;
-    background-size: 9% 50%;
-	font-size: 14px;
-}
-.content2 input[type="tel"] {
-	margin-top: 6%;
-	width:65%;
-	background: url(../images/phone.png) no-repeat 191px 10px;
-    background-size: 9% 50%;
-	font-size: 14px;
-}
-.content2 input[type="email"] {
-	margin-top: 6%;
-	width:65%;
-	background: url(../images/mail.png) no-repeat 191px 10px;
-    background-size: 9% 50%;
-	font-size: 14px;
-}
-.content2 input[type="password"] {
-	margin-top: 6%;
-	width:65%;
-	background: url(../images/lock.png) no-repeat 191px 10px;
-    background-size: 9% 50%;
-	font-size: 14px;
-}
-.log .content1 h2, .log .content2 h2 {
-    font-size: 23px;
-}
-.sign-in , .reset {
-    font-size: 15px;
-	width: 87px;
-}
-.footer p {
-    font-size: 14px;
-}
-}
-
-	
