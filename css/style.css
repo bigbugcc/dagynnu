@@ -140,40 +140,64 @@ body{
       background-color:rgba(238,156,167,.25);
       font-weight:bold;
     }
-.card--welcome .btn-register{
+.card--welcome .btn-result{
     margin-bottom:.8em;
     background-color:#ee9ca7;
   }
-.card--welcome .btn-register:hover{
+.card--welcome .btn-result:hover{
       color:#ee9ca7;
     }
-.card--welcome .btn-login{
+.card--welcome .btn-cx{
     background-color:#a7bfe8;
   }
-
-.card-inquire .card-title{
+.card--result .card-title{
+    color:#ee9ca7;
+  }
+.card--result .badge{
+    background-color:#ee9ca7;
+  }
+.card--result .btn{
+    background-color:#ee9ca7;
+  }
+.card--result .btn:hover{
+			background-color:#fff;
+			color:#ee9ca7 !important;
+			font-weight:bold;
+			border:2px solid rgba(238,156,167,.25);
+		}
+.card--result .btn:focus{
+      box-shadow:0 0 0 0.2rem rgba(238,156,167,.25);
+    }
+.card--result .form-control{
+    color:#ee9ca7;
+    border-color:rgba(238,156,167,.25);
+  }
+.card--result .form-control:focus{
+      box-shadow:0 0 0 0.2rem rgba(238,156,167,.25);
+    }
+.card--cx .card-title{
     color:#a7bfe8;
   }
-.card-inquire .badge{
+.card--cx .badge{
     background-color:#a7bfe8;
   }
-.card-inquire .btn{
+.card--cx .btn{
     background-color:#a7bfe8;
   }
-.card-inquire .btn:hover{
+.card--cx .btn:hover{
 			background-color:#fff;
 			color:#a7bfe8 !important;
 			font-weight:bold;
 			border:2px solid rgba(167,191,232,.25);
 		}
-.card-inquire .btn:focus{
+.card--cx .btn:focus{
       box-shadow:0 0 0 0.2rem rgba(167,191,232,.25);
     }
-.card-inquire .form-control{
+.card--cx .form-control{
     color:#a7bfe8;
     border-color:rgba(167,191,232,.25);
   }
-.card-inquire .form-control:focus{
+.card--cx .form-control:focus{
       box-shadow:0 0 0 0.2rem rgba(167,191,232,.25);
     }
 body{
@@ -182,10 +206,10 @@ body{
   transition:background 3s ease;
   background-position:50% 50%;
 }
-body.is-register{
+body.is-result{
   	background-position:0% 50%;
 	}
-body.is-login{
+body.is-cx{
     background-position:100% 50%;
   }
 .card{
