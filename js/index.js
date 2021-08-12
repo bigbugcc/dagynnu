@@ -1,94 +1,288 @@
-const cards = document.querySelectorAll('.card');
-const btns = document.querySelectorAll('.js-btn');
-let SlideVerifyPlug;
-let slideVerify;
+layui.use(['layer', 'form', 'jquery', 'table'], function () {
+  let form = layui.form,
+    $ = layui.jquery,
+    table = layui.table,
+    layer = layui.layer;
+  let SlideVerifyPlug, slideVerify;//滑块
+  const cards = document.querySelectorAll('.card'),
+    btns = document.querySelectorAll('.js-btn');
 
-	function onclicksubmit(){
-			var flag = true;
-			var xh = $("#xh").val();
+  //返回查询页面
+  backcx = function (){
+    slideVerify.resetVerify(); 
+    bg_change('cx');
+    view_change(document.getElementById('cx'));
+  }
 
-			var xm = $("#xm").val();
-			if(xm==""){
-				alert("学生姓名不能为空！");
-				flag = false;
-        slideVerify.resetVerify();
-			}
+  $(function () {
+    SlideVerifyPlug = window.slideVerifyPlug;
+    slideVerify = new SlideVerifyPlug('#verify-wrap2', {
+      wrapWidth: '265',
+      initText: '请按住滑块',
+      sucessText: '验证通过',
 
-			if(!(slideVerify.slideFinishState)){
-				alert('请拖动滑块验证');
-				flag = false;
-			}else if(flag&&slideVerify.slideFinishState){
-        $.ajax({  
-          type: "POST",   
-          url:"https://cors.bughero.net/https://dagqxcx.ynnu.edu.cn/daqx/findStu_daqx.do",  
-          data:$('#f1').serialize(),// 序列化表单值  
-          async: false,  
-          error: function(request) {
-            console.log("Connection error :"+request);
-            slideVerify.resetVerify();
-            flag = true;
-          },  
-          success: function(data) { 
-            flag = false;
-            slideVerify.resetVerify();
-            var doc = document.createElement('div'); 
+    });
+    //重置滑块
+    // $("#resetBtn").on('click',function(){ 
+    //     slideVerify.resetVerify(); 
+    // }) 
+    //获取滑块状态
+    // $("#getState").on('click',function(){ 
+    //     alert(slideVerify.slideFinishState); 
+    // }) 
+  });
+
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', on_btn_click, true);
+    btn.addEventListener('touch', on_btn_click, true);
+  });
+
+  function on_btn_click(e) {
+    slideVerify.resetVerify();
+    const nextID = e.currentTarget.getAttribute('data-target');
+    const next = document.getElementById(nextID);
+    if (!next) return;
+    bg_change(nextID);
+    view_change(next);
+    return false;
+  }
+
+  /* Add class to the body */
+  function bg_change(next) {
+    document.body.className = '';
+    document.body.classList.add('is-' + next);
+  }
+
+  /* Add class to a card */
+  function view_change(next) {
+    cards.forEach(card => { card.classList.remove('is-show'); });
+    next.classList.add('is-show');
+  }
+
+
+
+
+  onclicksubmit = function () {
+    var flag = true;
+    var xh = $("#xh").val();
+
+    var xm = $("#xm").val();
+    if (xm == "") {
+      layer.msg('学生姓名不能为空！', { icon: 5 });
+      flag = false;
+      slideVerify.resetVerify();
+    }
+
+    if (!(slideVerify.slideFinishState)) {
+      layer.msg('请拖动滑块验证！', { icon: 5 });
+      flag = false;
+    } else if (flag && slideVerify.slideFinishState) {
+      $.ajax({
+        type: "POST",
+        url: "https://cors.bughero.net/https://dagqxcx.ynnu.edu.cn/daqx/findStu_daqx.do",
+        data: $('#f1').serialize(),
+        async: false,
+        error: function (request) {
+          console.log("Connection error :" + request);
+          slideVerify.resetVerify();
+          flag = true;
+        },
+        success: function (data) {
+          flag = false;
+          slideVerify.resetVerify();
+          var doc = document.createElement('div');
+
+          try {
+
             doc.innerHTML = data;
-            let table =  doc.getElementsByClassName('detailTable')[0];
+
+          } catch (e) {
+
+            console.log(e.stack);
+
+          }
+          let dta = doc.getElementsByClassName('detailTable')[0];
+          
+          if (dta.rows.length > 0) {
             bg_change('result');
             view_change(document.getElementById('result'));
+            let app = new Vue({
+              el: '#result',
+              data: {
+                stu: {
+                  name: '',
+                  stuid: '',
+                  college: '',
+                  major: '',
+                  daqx: '',
+                  zctime: '',
+                  postnum: '',
+                  gzda: '',
+                  zsbda: '',
+                  bkda: '',
+                  tycl: '',
+                  dycl: '',
+                  xsdj: '',
+                  rxtime: '',
+                  danum: ''
+                },
+                datas: [],//测试数据
+                students: []
+              },
+              created: function () {
+                this.students = this.datas.slice(0);
+              },
+              methods: {
+                ref: function () {
+                  this.students.splice(0, this.students.length);
+                  this.students = this.datas.slice(0);
+                },
+                detail: function (x) {
+                  let usr = app.students;
+                  layer.open({
+                    type: 1,
+                    closeBtn: 1,
+                    title: "[ " + usr[x].stuid + " - " + usr[x].name + " ] 详细信息 ",
+                    area: ['550px', '600px'],
+                    shadeClose: true,
+                    content: $('#detail'),
+                    success: function () {
+
+                      table.render({
+                        elem: '#tb_detail'
+                        , cols: [[ //标题栏
+                          { field: 'key', title: '', align: 'center', width: 200 }
+                          , { field: 'value', title: '', align: 'left', }
+                        ]]
+                        , data: [
+                          {
+                            "key": "姓名"
+                            , "value": usr[x].name
+                          },
+                          {
+                            "key": "学号"
+                            , "value": usr[x].stuid
+                          },
+                          {
+                            "key": "学院"
+                            , "value": usr[x].college
+                          },
+                          {
+                            "key": "专业"
+                            , "value": usr[x].major
+                          },
+                          {
+                            "key": "档案去向"
+                            , "value": usr[x].daqx
+                          },
+                          {
+                            "key": "转出时间"
+                            , "value": usr[x].zctime
+                          },
+                          {
+                            "key": "邮寄单号"
+                            , "value": usr[x].postnum
+                          },
+                          {
+                            "key": "高中档案是否到达"
+                            , "value": usr[x].gzda
+                          },
+                          {
+                            "key": "专升本档是否到达"
+                            , "value": usr[x].zsbda
+                          },
+                          {
+                            "key": "本科档案是否到达"
+                            , "value": usr[x].bkda
+                          },
+                          {
+                            "key": "团员材料是否到达"
+                            , "value": usr[x].tycl
+                          },
+                          {
+                            "key": "党员材料是否到达"
+                            , "value": usr[x].dycl
+                          },
+                          {
+                            "key": "云南师范大学学生登记表"
+                            , "value": usr[x].xsdj
+                          },
+                          {
+                            "key": "入学年度"
+                            , "value": usr[x].rxtime
+                          },
+                          {
+                            "key": "档号"
+                            , "value": usr[x].danum
+                          },
+                        ],
+                        page: false
+                        , limit: 15
+                      });
+                    }
+                  });
+                }
+              }
+            });
+
+            //学生
+            let stu = app.stu;
+            for (let i = 0; i < dta.rows.length; i += 16) {
+              stu = {
+                name: '',
+                stuid: '',
+                college: '',
+                major: '',
+                daqx: '',
+                zctime: '',
+                postnum: '',
+                gzda: '',
+                zsbda: '',
+                bkda: '',
+                tycl: '',
+                dycl: '',
+                xsdj: '',
+                rxtime: '',
+                xsdj: ''
+              }
+
+              stu.name = dta.rows[i].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.stuid = dta.rows[i + 1].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.college = dta.rows[i + 2].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.major = dta.rows[i + 3].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.daqx = dta.rows[i + 4].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.zctime = dta.rows[i + 5].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.postnum = dta.rows[i + 6].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.gzda = dta.rows[i + 7].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.zsbda = dta.rows[i + 8].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.bkda = dta.rows[i + 9].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.tycl = dta.rows[i + 10].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.dycl = dta.rows[i + 11].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.xsdj = dta.rows[i + 12].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.rxtime = dta.rows[i + 13].lastElementChild.innerText.replace(/\s*/g, "");
+              stu.xsdj = dta.rows[i + 14].lastElementChild.innerText.replace(/\s*/g, "");
+
+              app.students.push(stu);
+            }
+
+          } else {
+            layer.msg('暂未找到有关信息！', { icon: 5 });
           }
-        });
-      }
-			return flag;
-	}
-		//下载信息
-		function onclickprintbys(xm,xh){
-			window.location.href="http://dagqxcx.ynnu.edu.cn:443/daqx/printStuInfo.do?groupId=2153501&xm="+encodeURI(encodeURI(xm))+"&xh="+xh;
-	}
-		
-		$(function(){ 
-            console.log(parseFloat('1px')) 
-            SlideVerifyPlug = window.slideVerifyPlug; 
-
-            slideVerify = new SlideVerifyPlug('#verify-wrap2',{ 
-                wrapWidth:'265', 
-                initText:'请按住滑块', 
-                sucessText:'验证通过', 
-                    
-            }); 
-			//重置滑块
-            // $("#resetBtn2").on('click',function(){ 
-            //     slideVerify.resetVerify(); 
-            // }) 
-			//获取滑块状态
-            // $("#getState2").on('click',function(){ 
-            //     alert(slideVerify.slideFinishState); 
-            // }) 
-        })
+        }
+      });
+    }
+    return flag;
+  }
+  //下载信息
+  onclickprintbys = function (xm, xh) {
+    window.location.href = "http://dagqxcx.ynnu.edu.cn:443/daqx/printStuInfo.do?groupId=2153501&xm=" + encodeURI(encodeURI(xm)) + "&xh=" + xh;
+  }
 
 
-btns.forEach(btn => {
-  btn.addEventListener('click', on_btn_click, true);
-  btn.addEventListener('touch', on_btn_click, true);
+
+  //滑块验证
+ 
 });
 
-function on_btn_click(e) {
-  const nextID = e.currentTarget.getAttribute('data-target');
-  const next = document.getElementById(nextID);
-  if (!next) return;
-  bg_change(nextID);
-  view_change(next);
-  return false;
-}
 
-/* Add class to the body */
-function bg_change(next) {
-  document.body.className = '';
-  document.body.classList.add('is-' + next);
-}
-
-/* Add class to a card */
-function view_change(next) {
-  cards.forEach(card => {card.classList.remove('is-show');});
-  next.classList.add('is-show');
-}

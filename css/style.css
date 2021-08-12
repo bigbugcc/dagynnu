@@ -7,6 +7,24 @@ body{
   font-family:'Josefin Sans', sans-serif;
 }
 
+.resultcard{
+  width: 100%;
+  max-height: 600px;
+  overflow:scroll;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.layui-table-cell {
+  font-size:14px;
+  padding:0 5px;
+  height:auto;
+  overflow:visible;
+  text-overflow:inherit;
+  white-space:normal;
+  word-break: break-all;
+}
+
 .card{
 	position:absolute;
 	top:50%;
@@ -34,7 +52,6 @@ body{
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
   text-align:center;
 }
 
