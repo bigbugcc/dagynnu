@@ -7,20 +7,12 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
   const cards = document.querySelectorAll('.card'),
     btns = document.querySelectorAll('.js-btn');
 
-  //返回查询页面
-  backcx = function (){
-    slideVerify.resetVerify(); 
-    bg_change('cx');
-    view_change(document.getElementById('cx'));
-  }
-
   $(function () {
     SlideVerifyPlug = window.slideVerifyPlug;
     slideVerify = new SlideVerifyPlug('#verify-wrap2', {
       wrapWidth: '265',
       initText: '请按住滑块',
       sucessText: '验证通过',
-
     });
     //重置滑块
     // $("#resetBtn").on('click',function(){ 
@@ -32,6 +24,9 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
     // }) 
   });
 
+  back = function () {
+    location.reload();
+  }
 
   btns.forEach(btn => {
     btn.addEventListener('click', on_btn_click, true);
@@ -60,53 +55,60 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
     next.classList.add('is-show');
   }
 
-
-
-
   onclicksubmit = function () {
-    var flag = true;
-    var xh = $("#xh").val();
+    let xh = $("#xh").val();
+    let xm = $("#xm").val();
+    let groupId = $("#groupId").val();
+    let urls = "https://dagqxcx.ynnu.edu.cn/daqx/findStu_daqx.do?";
 
-    var xm = $("#xm").val();
-    if (xm == "") {
+    if (xm.trim().length == 0) {
       layer.msg('学生姓名不能为空！', { icon: 5 });
-      flag = false;
       slideVerify.resetVerify();
+      return false;
     }
 
     if (!(slideVerify.slideFinishState)) {
       layer.msg('请拖动滑块验证！', { icon: 5 });
-      flag = false;
-    } else if (flag && slideVerify.slideFinishState) {
+    } else if (slideVerify.slideFinishState&&xm.trim().length != 0) {
       $.ajax({
         type: "POST",
         url: "https://cors.bughero.net/https://dagqxcx.ynnu.edu.cn/daqx/findStu_daqx.do",
         data: $('#f1').serialize(),
-        async: false,
+        async: true,
+        beforeSend: function () {
+          layer.msg('查询中请稍后...', {
+            icon: 16
+            , shade: 0.01
+          });
+        },
         error: function (request) {
+          layer.closeAll();
           console.log("Connection error :" + request);
-          slideVerify.resetVerify();
-          flag = true;
+          if (xm.trim().length != 0) {
+            urls += "xm=" + xm
+          }
+          if (xh.trim().length != 0) {
+            urls += "&xh=" + xh
+          }
+          if (groupId.trim().length != 0) {
+            urls += "&groupId=" + groupId
+          }
+          window.location.href = urls;
         },
         success: function (data) {
-          flag = false;
           slideVerify.resetVerify();
-          var doc = document.createElement('div');
 
-          try {
+          data = data.replace(/<\s?img[^>]*>/gi, ""); //移除img标签
+          data = data.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, ""); //移除script标签
+          let doc = document.createElement('html');
+          doc.innerHTML = data;
 
-            doc.innerHTML = data;
-
-          } catch (e) {
-
-            console.log(e.stack);
-
-          }
           let dta = doc.getElementsByClassName('detailTable')[0];
-          
           if (dta.rows.length > 0) {
+
             bg_change('result');
             view_change(document.getElementById('result'));
+
             let app = new Vue({
               el: '#result',
               data: {
@@ -265,24 +267,19 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
 
               app.students.push(stu);
             }
-
+            layer.closeAll();//关闭加载动画
           } else {
+            flag = true;
             layer.msg('暂未找到有关信息！', { icon: 5 });
           }
         }
       });
     }
-    return flag;
+    return false;
   }
   //下载信息
   onclickprintbys = function (xm, xh) {
     window.location.href = "http://dagqxcx.ynnu.edu.cn:443/daqx/printStuInfo.do?groupId=2153501&xm=" + encodeURI(encodeURI(xm)) + "&xh=" + xh;
   }
 
-
-
-  //滑块验证
- 
 });
-
-

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui@latest/src/css/layui.css">
+<body>
+    <button class="layui-btn" onclick="test()">测试</button>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/layui@latest/src/layui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.js"></script>
+<script>
+    layui.use(['layer', 'form', 'jquery', 'table'], function () {
+        layer = layui.layer;
+
+        
+        new Promise((resolve, reject) => {
+            console.log(4);
+            resolve();
+        }).then(() => {
+            console.log(5);
+        })
+
+    });
+</script>
+</html>
