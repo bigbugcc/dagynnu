@@ -75,10 +75,12 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
         url: "https://cors.bughero.net/https://dagqxcx.ynnu.edu.cn/daqx/findStu_daqx.do",
         data: $('#f1').serialize(),
         async: true,
+        setTimeout:3000,
         beforeSend: function () {
-          layer.msg('查询中请稍后...', {
-            icon: 16
-            , shade: 0.01
+          layer.msg('查询中...', {
+            icon: 16,
+            shade: 0.01,
+            time:-1
           });
         },
         error: function (request) {
@@ -102,8 +104,9 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
           data = data.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, ""); //移除script标签
           let doc = document.createElement('html');
           doc.innerHTML = data;
-
           let dta = doc.getElementsByClassName('detailTable')[0];
+
+          layer.closeAll();
           if (dta.rows.length > 0) {
 
             bg_change('result');
