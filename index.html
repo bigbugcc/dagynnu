@@ -17,8 +17,8 @@
 	<!--layui-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/layui@latest/src/css/layui.css">
 	<!--主要样式-->
-	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bigbugcc/dagynnu@latest/css/style.css"> -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bigbugcc/dagynnu@latest/css/style.css">
+	<!-- <link rel="stylesheet" href="css/style.css"> -->
 
 </head>
 
@@ -71,25 +71,7 @@
 				<div class="card-body">
 					<h2 class="card-title">查询结果</h2>
 					<div class="resultcard">
-						<table class="layui-table" style="text-align:center;" id="tb_result">
-							<thead>
-								<tr>
-									<th style="text-align: center;">姓名</th>
-									<th style="text-align: center;">学号</th>
-									<th style="text-align: center;">专业</th>
-									<th style="text-align: center;">详细</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr v-for="(stu,index) in students">
-									<td>{{ stu.name }}</td>
-									<td>{{ stu.stuid }}</td>
-									<td>{{ stu.major }}</td>
-									<td :class="'text-center'"><button @click="detail(index)"
-											class="layui-btn layui-btn-sm layui-btn-danger">查看</button></td>
-								</tr>
-							</tbody>
-						</table>
+						<table class="layui-hide" lay-filter="tb_result" id="tb_result"></table>
 					</div>
 				</div>
 				<div style="width: 100%;text-align: center;">
@@ -103,14 +85,17 @@
 	<div id="detail" style="display:none">
 		<table style="margin:10px" class="layui-hide layui-table-cell" id="tb_detail" lay-filter="tb_detail"></table>
 	</div>
+	<script type="text/html" id="bar">
+		<a class="layui-btn layui-btn-danger layui-btn-xs" style="color: white;"  lay-event="detail">查看</a>
+	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/layui@latest/src/layui.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.js"></script>
-	<!-- <script src="https://cdn.jsdelivr.net/gh/bigbugcc/dagynnu@latest/js/jq-slideVerify.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/bigbugcc/dagynnu@latest/js/index.js"></script> -->
-	<script src="js/jq-slideVerify.js"></script>
-	<script src="js/index.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/bigbugcc/dagynnu@latest/js/jq-slideVerify.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/bigbugcc/dagynnu@latest/js/index.js"></script>
+	<!-- <script src="js/jq-slideVerify.js"></script>
+	<script src="js/index.js"></script> -->
 </body>
 
 </html>

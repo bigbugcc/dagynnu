@@ -69,18 +69,18 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
 
     if (!(slideVerify.slideFinishState)) {
       layer.msg('请拖动滑块验证！', { icon: 5 });
-    } else if (slideVerify.slideFinishState&&xm.trim().length != 0) {
+    } else if (slideVerify.slideFinishState && xm.trim().length != 0) {
       $.ajax({
         type: "POST",
         url: "https://cors.bughero.net/https://dagqxcx.ynnu.edu.cn/daqx/findStu_daqx.do",
         data: $('#f1').serialize(),
         async: true,
-        setTimeout:3000,
+        setTimeout: 3000,
         beforeSend: function () {
           layer.msg('查询中...', {
             icon: 16,
             shade: 0.01,
-            time:-1
+            time: -1
           });
         },
         error: function (request) {
@@ -99,7 +99,6 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
         },
         success: function (data) {
           slideVerify.resetVerify();
-
           data = data.replace(/<\s?img[^>]*>/gi, ""); //移除img标签
           data = data.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, ""); //移除script标签
           let doc = document.createElement('html');
@@ -132,102 +131,7 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
                   rxtime: '',
                   danum: ''
                 },
-                datas: [],//测试数据
                 students: []
-              },
-              created: function () {
-                this.students = this.datas.slice(0);
-              },
-              methods: {
-                ref: function () {
-                  this.students.splice(0, this.students.length);
-                  this.students = this.datas.slice(0);
-                },
-                detail: function (x) {
-                  let usr = app.students;
-                  layer.open({
-                    type: 1,
-                    closeBtn: 1,
-                    title: "[ " + usr[x].stuid + " - " + usr[x].name + " ] 详细信息 ",
-                    area: ['550px', '600px'],
-                    shadeClose: true,
-                    content: $('#detail'),
-                    success: function () {
-
-                      table.render({
-                        elem: '#tb_detail'
-                        , cols: [[ //标题栏
-                          { field: 'key', title: '', align: 'center', width: 200 }
-                          , { field: 'value', title: '', align: 'left', }
-                        ]]
-                        , data: [
-                          {
-                            "key": "姓名"
-                            , "value": usr[x].name
-                          },
-                          {
-                            "key": "学号"
-                            , "value": usr[x].stuid
-                          },
-                          {
-                            "key": "学院"
-                            , "value": usr[x].college
-                          },
-                          {
-                            "key": "专业"
-                            , "value": usr[x].major
-                          },
-                          {
-                            "key": "档案去向"
-                            , "value": usr[x].daqx
-                          },
-                          {
-                            "key": "转出时间"
-                            , "value": usr[x].zctime
-                          },
-                          {
-                            "key": "邮寄单号"
-                            , "value": usr[x].postnum
-                          },
-                          {
-                            "key": "高中档案是否到达"
-                            , "value": usr[x].gzda
-                          },
-                          {
-                            "key": "专升本档是否到达"
-                            , "value": usr[x].zsbda
-                          },
-                          {
-                            "key": "本科档案是否到达"
-                            , "value": usr[x].bkda
-                          },
-                          {
-                            "key": "团员材料是否到达"
-                            , "value": usr[x].tycl
-                          },
-                          {
-                            "key": "党员材料是否到达"
-                            , "value": usr[x].dycl
-                          },
-                          {
-                            "key": "云南师范大学学生登记表"
-                            , "value": usr[x].xsdj
-                          },
-                          {
-                            "key": "入学年度"
-                            , "value": usr[x].rxtime
-                          },
-                          {
-                            "key": "档号"
-                            , "value": usr[x].danum
-                          },
-                        ],
-                        page: false
-                        , limit: 15
-                      });
-                    }
-                  });
-                }
               }
             });
 
@@ -270,6 +174,114 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
 
               app.students.push(stu);
             }
+
+            table.render({
+              elem: '#tb_result'
+              ,cellMinWidth: 100
+              ,width:'400'
+              ,height:'full-600'
+              , cols: [[
+                , { field: 'name', title: '姓名',width:80,  align: 'center'}
+                , { field: 'stuid', title: '学号', align: 'center' }
+                , { field: 'major', title: '专业', align: 'center' }
+                , { field: 'detail', title: '详情', toolbar: '#bar', width:70, align: 'center' }
+              ]]
+              , data: app.students
+              , even: true
+            });
+
+            table.reload('tb_result', {
+              data: app.students
+            });
+
+            //工具栏
+            table.on('tool(tb_result)', function(obj){
+              let data = obj.data;
+              //console.log(obj)
+              if(obj.event === 'detail'){
+                layer.open({
+                  type: 1,
+                  closeBtn: 1,
+                  title: "[ " + data.stuid + " - " + data.name + " ] 详细信息 ",
+                  area: ['550px', '600px'],
+                  shadeClose: true,
+                  content: $('#detail'),
+                  success: function () {
+                    table.render({
+                      elem: '#tb_detail'
+                      , cols: [[
+                        { field: 'key', title: '', align: 'center', width: 200 }
+                        , { field: 'value', title: '', align: 'left', }
+                      ]]
+                      , data: [
+                        {
+                          "key": "姓名"
+                          , "value": data.name
+                        },
+                        {
+                          "key": "学号"
+                          , "value": data.stuid
+                        },
+                        {
+                          "key": "学院"
+                          , "value": data.college
+                        },
+                        {
+                          "key": "专业"
+                          , "value": data.major
+                        },
+                        {
+                          "key": "档案去向"
+                          , "value": data.daqx
+                        },
+                        {
+                          "key": "转出时间"
+                          , "value": data.zctime
+                        },
+                        {
+                          "key": "邮寄单号"
+                          , "value": data.postnum
+                        },
+                        {
+                          "key": "高中档案是否到达"
+                          , "value": data.gzda
+                        },
+                        {
+                          "key": "专升本档是否到达"
+                          , "value": data.zsbda
+                        },
+                        {
+                          "key": "本科档案是否到达"
+                          , "value": data.bkda
+                        },
+                        {
+                          "key": "团员材料是否到达"
+                          , "value": data.tycl
+                        },
+                        {
+                          "key": "党员材料是否到达"
+                          , "value": data.dycl
+                        },
+                        {
+                          "key": "云南师范大学学生登记表"
+                          , "value": data.xsdj
+                        },
+                        {
+                          "key": "入学年度"
+                          , "value": data.rxtime
+                        },
+                        {
+                          "key": "档号"
+                          , "value": data.danum
+                        },
+                      ],
+                      page: false
+                      , limit: 15
+                    });
+                  }
+                });
+              } 
+            });
             layer.closeAll();//关闭加载动画
           } else {
             flag = true;
