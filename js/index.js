@@ -188,6 +188,7 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
               ]]
               , data: app.students
               , even: true
+              , limit : 100
             });
 
             table.reload('tb_result', {
