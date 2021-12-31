@@ -59,7 +59,7 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
     let xh = $("#xh").val();
     let xm = $("#xm").val();
     let groupId = $("#groupId").val();
-    let urls = "https://dagqxcx.ynnu.edu.cn/daqx/findStu_daqx.do?";
+    let baseurl = "https://cors.bughero.workers.dev/?";
 
     if (xm.trim().length == 0) {
       layer.msg('学生姓名不能为空！', { icon: 5 });
@@ -72,7 +72,7 @@ layui.use(['layer', 'form', 'jquery', 'table'], function () {
     } else if (slideVerify.slideFinishState && xm.trim().length != 0) {
       $.ajax({
         type: "POST",
-        url: "https://cors.bughero.net/https://dagqxcx.ynnu.edu.cn/daqx/findStu_daqx.do",
+        url: baseurl+"https://dagqxcx.ynnu.edu.cn/daqx/findStu_daqx.do",
         data: $('#f1').serialize(),
         async: true,
         setTimeout: 3000,
